@@ -72,7 +72,6 @@ Page({
   onLoad: function () {    
     this.getCategoryInfo()
     this.getCouponList();
-    this.getNotice();
     this.getBannerList()
   },
   getCategoryInfo: function() {
@@ -179,20 +178,6 @@ Page({
         })
       }
     });
-  },
-  getNotice: function () {
-    var that = this;
-    wx.request({
-      url: 'https://api.it120.cc/' + app.globalData.subDomain + '/notice/list',
-      data: { pageSize :5},
-      success: function (res) {
-        if (res.data.code == 0) {
-          that.setData({
-            noticeList: res.data.data
-          });
-        }
-      }
-    })
   },
   tapBanner: function(e) {
     if (e.currentTarget.dataset.link != '') {
